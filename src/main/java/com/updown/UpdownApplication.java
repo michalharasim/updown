@@ -11,6 +11,8 @@ public class UpdownApplication {
 		System.out.println("");
 		System.out.println("siema");
 		System.out.println("nowy brancz");
+		System.out.println("nowy");
+		System.out.println("to ja");
 	}
 
 }
