@@ -9,6 +9,7 @@ public class UpdownApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UpdownApplication.class, args);
 		System.out.println("");
+		System.out.println("siema");
 	}
 
 }
