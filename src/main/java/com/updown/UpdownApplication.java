@@ -10,6 +10,7 @@ public class UpdownApplication {
 		SpringApplication.run(UpdownApplication.class, args);
 		System.out.println("");
 		System.out.println("siema");
+		System.out.println("nowy brancz");
 	}
 
 }
