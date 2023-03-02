@@ -1,23 +1,37 @@
-package com.updown.fileinfo;
+package com.updown.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
-@Table(name = "fileinfo")
+@Data
+@NoArgsConstructor
 public class FileInfo {
 
     @Id
-    private Long id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    private String fileName;
+    private String fileType;
+//    private LocalDateTime uploadDate;
+//    private String uploadUser;
+    @Lob
+    private byte[] data;
 
-    public void setId(Long id) {
-        this.id = id;
+    public FileInfo(String fileName, String fileType, byte[] data) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
     }
 
-    @Id
-    public Long getId() {
-        return id;
-    }
+
 }

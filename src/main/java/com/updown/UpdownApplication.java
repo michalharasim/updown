@@ -8,11 +8,5 @@ public class UpdownApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UpdownApplication.class, args);
-		System.out.println("");
-		System.out.println("siema");
-		System.out.println("nowy brancz");
-		System.out.println("nowy");
-		System.out.println("to ja");
 	}
-
 }
