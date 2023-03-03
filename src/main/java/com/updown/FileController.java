@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @RestController
 @AllArgsConstructor
 public class FileController {
@@ -30,17 +34,18 @@ public class FileController {
                 .path(fileInfo.getId())
                 .toUriString();
         return new FileInfoResponse(fileInfo.getFileName(), downloadURL,
-                file.getContentType(), file.getSize());
+                file.getContentType(), file.getSize(), LocalDateTime.now());
     }
 
     @GetMapping("/download/{id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String id) throws Exception {
         FileInfo fileInfo = fileUploadService.downloadFile(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "fileinfo; filename=" + fileInfo.getFileName());
+        headers.add("Location", "http://localhost:8080/");
         return ResponseEntity.ok().
                 contentType(MediaType.parseMediaType(fileInfo.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION,
-                        "fileinfo; filename=\"" + fileInfo.getFileType() + "\"")
+                .headers(headers)
                 .body(new ByteArrayResource(fileInfo.getData()));
     }
-
 }

@@ -2,13 +2,8 @@ package com.updown.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Data
@@ -16,22 +11,30 @@ import java.util.Date;
 public class FileInfo {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String fileName;
     private String fileType;
-//    private LocalDateTime uploadDate;
-//    private String uploadUser;
+    private int downloadCount;
     @Lob
     private byte[] data;
 
-    public FileInfo(String fileName, String fileType, byte[] data) {
+    public FileInfo(String id, String fileName, String fileType, byte[] data) {
+        this.id = id;
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.downloadCount = 0;
     }
 
+    public int getDownloadCount() {
+        return downloadCount;
+    }
 
+    public void increaseDownloads() {
+        this.downloadCount++;
+    }
+
+    public String getId() {
+        return this.id;
+    }
 }
