@@ -10,6 +10,7 @@ public class ViewController {
     public ModelAndView welcome() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index.html");
+        System.out.println();
         return modelAndView;
     }
 }
