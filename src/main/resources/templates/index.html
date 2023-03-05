@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moja aplikacja</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<h1>Witaj w mojej aplikacji</h1>
+<label for="fileChooser">Choose a file to upload!</label>
+<input type="file" id="fileChooser" name="fileChooser">
+<br>
+<button type="submit" id="submitButton" onclick="uploadFile();">Upload</button>
+<p>Wybrany plik: <span id="fileName"></span></p>
+<p>Download URL: <a href="#" id="downloadURL"></a></p>
+</body>
+</html>
