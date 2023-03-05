@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 @Service
@@ -24,7 +25,7 @@ public class FileUploadService {
                 }
                 System.out.println(file.getContentType());
                 FileInfo fileInfo = new FileInfo(generateId() ,fileName,
-                        file.getContentType(), file.getBytes());
+                        file.getContentType(), file.getBytes(), file.getSize(), LocalDateTime.now());
                 return fileRepository.save(fileInfo);
             } catch (Exception e) {
                 throw new Exception("File cant be saved.");
