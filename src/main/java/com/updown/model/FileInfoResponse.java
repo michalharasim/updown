@@ -16,5 +16,4 @@ public class FileInfoResponse {
     private String downloadURL;
     private String fileType;
     private long fileSize;
-    private LocalDateTime uploadDate;
 }

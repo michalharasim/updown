@@ -7,11 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class FileInfo {
 
     @Id
@@ -19,15 +19,21 @@ public class FileInfo {
     private String fileName;
     private String fileType;
     private int downloadCount;
+    private String fileSize;
+    @Temporal(TemporalType.TIMESTAMP)
+    private ZonedDateTime uploadDate;
+
     @Lob
     private byte[] data;
 
-    public FileInfo(String id, String fileName, String fileType, byte[] data, long size, LocalDateTime now) {
+    public FileInfo(String id, String fileName, String fileType, byte[] data, String fileSize) {
         this.id = id;
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.uploadDate = ZonedDateTime.now();
         this.downloadCount = 0;
+        this.fileSize = fileSize;
     }
 
     public int getDownloadCount() {

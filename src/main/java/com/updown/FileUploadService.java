@@ -3,13 +3,11 @@ package com.updown;
 import com.updown.model.FileInfo;
 import com.updown.repository.FileRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -24,12 +22,17 @@ public class FileUploadService {
                     throw new Exception("invalid file name" + fileName);
                 }
                 System.out.println(file.getContentType());
+                String sizeConverted = convertSize(file.getSize());
                 FileInfo fileInfo = new FileInfo(generateId() ,fileName,
-                        file.getContentType(), file.getBytes(), file.getSize(), LocalDateTime.now());
+                        file.getContentType(), file.getBytes(), sizeConverted);
                 return fileRepository.save(fileInfo);
             } catch (Exception e) {
                 throw new Exception("File cant be saved.");
             }
+    }
+
+    public FileInfo findFileById(String id) {
+        return fileRepository.findById(id).get();
     }
 
 
@@ -53,5 +56,16 @@ public class FileUploadService {
             stringBuilder.append(characters.charAt(random.nextInt(characters.length())));
         }
         return stringBuilder.toString();
+    }
+
+    public String convertSize(long fileSize) {
+        int i = 0;
+        double size = (double) fileSize;
+        String[] sizes = {"B", "KB", "MB", "GB"};
+        while (size >= 1024 && i < sizes.length - 1) {
+            size /= 1024;
+            i++;
+        }
+        return String.format("%.2f", size) + sizes[i];
     }
 }
