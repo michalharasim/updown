@@ -39,7 +39,6 @@ public class FileInfo {
     public int getDownloadCount() {
         return downloadCount;
     }
-
     public void increaseDownloads() {
         this.downloadCount++;
     }

@@ -38,7 +38,7 @@ public class FileController {
         downloadURL = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
                 .path(fileInfo.getId())
-                .path("/download/")
+                .path("/download")
                 .toUriString();
         return new FileInfoResponse(fileInfo.getFileName(), downloadURL,
                 file.getContentType(), file.getSize());
