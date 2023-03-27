@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 import java.util.Random;
@@ -35,8 +36,6 @@ public class FileUploadService {
         return fileRepository.findById(id).get();
     }
 
-
-
     public FileInfo downloadFile(String id) throws Exception {
         try {
             FileInfo fileInfo = fileRepository.findById(id).get();
@@ -44,6 +43,9 @@ public class FileUploadService {
             fileRepository.save(fileInfo);
             return fileRepository.findById(id).get();
         } catch (Exception e) {
+            ModelAndView modelAndView = new ModelAndView();
+
+            modelAndView.setViewName("errorview.html");
             throw new Exception("No such file!");
         }
     }

@@ -19,13 +19,14 @@ function uploadFile() {
             const fileName = data.fileName;
             const fileType = data.fileType;
             const downloadURL = data.downloadURL;
+            const fileURL = data.fileURL;
             const fileNameElement = document.getElementById("fileName");
             fileNameElement.textContent = fileName;
 
             const downloadURLElement =
-                document.getElementById("downloadURL");
-            downloadURLElement.textContent = downloadURL;
-            downloadURLElement.setAttribute("href", downloadURL);
+                document.getElementById("fileURL");
+            downloadURLElement.textContent = fileURL;
+            downloadURLElement.setAttribute("href", fileURL);
             fileInput.value = "";
         })
         .catch(error => console.error(error));

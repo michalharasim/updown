@@ -14,6 +14,7 @@ import java.util.Date;
 public class FileInfoResponse {
     private String fileName;
     private String downloadURL;
+    private String fileURL;
     private String fileType;
     private long fileSize;
 }

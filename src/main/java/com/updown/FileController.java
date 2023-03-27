@@ -34,35 +34,60 @@ public class FileController {
     public FileInfoResponse uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
         FileInfo fileInfo = null;
         String downloadURL = "";
+        String fileURL = "";
         fileInfo = fileUploadService.uploadFile(file);
         downloadURL = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
+                .path("/file/")
                 .path(fileInfo.getId())
                 .path("/download")
                 .toUriString();
-        return new FileInfoResponse(fileInfo.getFileName(), downloadURL,
+        fileURL = ServletUriComponentsBuilder
+                .fromCurrentContextPath()
+                .path("/file/")
+                .path(fileInfo.getId())
+                .toUriString();
+        return new FileInfoResponse(fileInfo.getFileName(), downloadURL, fileURL,
                 file.getContentType(), file.getSize());
     }
 
-    @RequestMapping(value="/{id}/file")
-    public ModelAndView thisView(@PathVariable String id) throws Exception {
-        FileInfo fileInfo = fileUploadService.findFileById(id);
-        if (fileInfo != null) {
-            ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("index2.html");
-            return modelAndView;
+    @RequestMapping(value="file/{id}")
+    public ModelAndView IDView(@PathVariable String id) throws Exception {
+        try {
+            FileInfo fileInfo = fileUploadService.findFileById(id);
+            if (fileInfo != null) {
+                return fileView();
+            }
+        } catch (Exception e) {
+            return errorView();
         }
-        throw new Exception("No such file!");
+        return null;
     }
+
+
+
+
 
     @RequestMapping(value="/")
     public ModelAndView mainView() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index.html");
+        modelAndView.setViewName("mainview.html");
         return modelAndView;
     }
 
-    @GetMapping("{id}/download")
+    public ModelAndView fileView() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("fileview.html");
+        return modelAndView;
+    }
+
+    public ModelAndView errorView() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("errorview.html");
+        return modelAndView;
+    }
+
+    @GetMapping("file/{id}/download")
     public ResponseEntity<Resource> downloadFile(@PathVariable String id) throws Exception {
         FileInfo fileInfo = fileUploadService.downloadFile(id);
         HttpHeaders headers = new HttpHeaders();

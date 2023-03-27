@@ -1,0 +1,157 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Domine-Bold', serif;
+}
+
+body {
+    background-color: #378EFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Domine-Bold', serif;
+    font-size: 22px;
+}
+
+.container {
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    background-color: #F6F2F2;
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.inner-container {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.05);
+}
+
+.inner-container-content #siema {
+    height: 80%;
+    display: flex;
+    margin: 30px 0;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 2px dashed #8EC0FF;
+}
+.inner-container-content #browse {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+
+form :where(i, p) {
+    color: #8EC0FF;
+}
+
+form i {
+    margin-top: 5px;
+    font-size: 50px;
+}
+
+section .row {
+    background: #C4DEFF;
+    margin-bottom: 10px;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .row .i {
+    color: #8EC0FF;
+    font-size: 30px;
+}
+
+section .details span {
+    font-size: 14px;
+}
+
+.progress-area .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress-area .progress-bar {
+    height: 5px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.progress-area .row .content {
+    width: 100%;
+    margin-left: 15px;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    width: 0%;
+    background: #378EFF;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.uploaded-area .row .content {
+    display: flex;
+    align-items: center;
+}
+
+.uploaded-area .row .details {
+    display: flex;
+    margin-left: 15px;
+    flex-direction: column;
+}
+
+.uploaded-area .details .size {
+    font-size: 11px;
+}
+
+
+
+#downloadButton {
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    padding: 16px 32px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#progressBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
