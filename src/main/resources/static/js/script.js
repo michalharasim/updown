@@ -20,12 +20,9 @@ function uploadFile() {
             const fileType = data.fileType;
             const downloadURL = data.downloadURL;
             const fileURL = data.fileURL;
-            const fileNameElement = document.getElementById("fileName");
-            fileNameElement.textContent = fileName;
-
             const downloadURLElement =
                 document.getElementById("fileURL");
-            downloadURLElement.textContent = fileURL;
+            downloadURLElement.textContent = "Download here";
             downloadURLElement.setAttribute("href", fileURL);
             fileInput.value = "";
         })

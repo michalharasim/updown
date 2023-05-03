@@ -8,49 +8,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
+<a href="http://localhost:8080/">
+  <img src="/img/logo.png" alt="Logo" style="position: absolute; width: 240px; height: 60px">
+</a>
 <div class="container">
   <div class="inner-container">
     <div class="inner-container-content">
       <h1>Upload</h1>
-      <!--    <label for="fileChooser">Choose a file to upload!</label>-->
-      <!--    <input type="file" id="fileChooser" name="fileChooser">-->
-      <div id="siema">
+      <div id="inside">
         <label for="fileChooser">Choose a file to upload!</label>
+        <br>
         <input type="file" id="fileChooser" name="fileChooser">
         <br>
-        <button type="submit" id="submitButton" onclick="uploadFile();">Upload</button>
-        <p>Wybrany plik: <span id="fileName"></span></p>
+        <button type="submit" id="uploadButton" onclick="uploadFile();">Upload</button>
         <p><a href="#" id="fileURL"></a></p>
       </div>
-      <section class="progress-area">
-        <li class="row">
-          <i class="fas fa-file-alt"></i>
-          <div class = "content">
-            <div class = "details">
-              <span class = "name">image1 - Uploading</span>
-              <span class = "percent">50%</span>
-            </div>
-            <div class ="progress-bar">
-              <div class = "progress"></div>
-            </div>
-          </div>
-        </li>
-      </section>
-      <section class = "uploaded-area">
-        <li class = "row">
-          <div class = "content">
-            <i class = "fas fa-file-alt"></i>
-            <div class = "details">
-              <span class = "name">image1.png - Uploaded</span>
-              <span class = "size">70 KB</span>
-            </div>
-          </div>
-          <i class = "fas fa-check"></i>
-        </li>
-      </section>
-      <!--    <button type="submit" id="submitButton" onclick="uploadFile();">Upload</button>-->
-      <!--    <p>Wybrany plik: <span id="fileName"></span></p>-->
-      <!--    <p><a href="#" id="fileURL"></a></p>-->
     </div>
   </div>
   <footer class="footer">2023 UpDown.com</footer>

@@ -51,12 +51,18 @@ public class FileController {
                 file.getContentType(), file.getSize());
     }
 
-    @RequestMapping(value="file/{id}")
-    public ModelAndView IDView(@PathVariable String id) throws Exception {
+    @RequestMapping(value = "file/{id}")
+    public ModelAndView fileView(@PathVariable String id) throws Exception {
         try {
             FileInfo fileInfo = fileUploadService.findFileById(id);
             if (fileInfo != null) {
-                return fileView();
+                ModelAndView modelAndView = new ModelAndView("fileview");
+                modelAndView.addObject("fileName", fileInfo.getFileName());
+                modelAndView.addObject("fileType", fileInfo.getFileType());
+                modelAndView.addObject("downloadCount", fileInfo.getDownloadCount());
+                modelAndView.addObject("fileSize", fileInfo.getFileSize());
+                modelAndView.addObject("uploadDate", fileInfo.getUploadDate());
+                return modelAndView;
             }
         } catch (Exception e) {
             return errorView();
@@ -64,20 +70,10 @@ public class FileController {
         return null;
     }
 
-
-
-
-
     @RequestMapping(value="/")
     public ModelAndView mainView() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mainview.html");
-        return modelAndView;
-    }
-
-    public ModelAndView fileView() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("fileview.html");
         return modelAndView;
     }
 

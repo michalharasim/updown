@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>UpDown</title>
@@ -9,12 +9,31 @@
 <body>
 
 <div class="container">
+    <a href="http://localhost:8080/">
+        <img src="/img/logo.png" alt="Logo" style="position: absolute; width: 240px; height: 60px">
+    </a>
     <div class="inner-container">
         <div class="inner-container-content">
-            <button id="downloadButton" onclick="downloadFile();">Download</button>
-            <p><a href="#" id="downloadURL"></a></p>
+            <div>
+                <h1>You are about to download <span th:text="${fileName}"></span></h1>
+            </div>
+            <br>
+            <div class="element">
+                <p>File Name: <span th:text="${fileName}"></span></p>
+            </div>
+            <div>
+                <p>Download Count: <span th:text="${downloadCount}"></span></p>
+            </div>
+            <div>
+                <p>File Size: <span th:text="${fileSize}"></span></p>
+            </div>
+            <div class="button-container">
+                <button id="downloadButton" onclick="downloadFile();">Download</button>
+                <p><a id="downloadURL" href="#" target="_blank"></a></p>
+            </div>
         </div>
     </div>
+    <footer class="footer">2023 UpDown.com</footer>
 </div>
 </body>
 </html>
