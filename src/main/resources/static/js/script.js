@@ -28,3 +28,4 @@ function uploadFile() {
         })
         .catch(error => console.error(error));
 }
+
