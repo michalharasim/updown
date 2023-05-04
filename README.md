@@ -1,3 +1,3 @@
 # updown
 
-Updown is a web application that allows you to upload any file, generates an URL that allows people to download the file you uploaded.
+Updown is a web application that enables you to upload any file and generates an URL for people to download the uploaded file.
